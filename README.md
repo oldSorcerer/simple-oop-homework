@@ -6,3 +6,4 @@
 ## Requirements:
 * Maven
 * Lombok
+* Stream API
