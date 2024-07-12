@@ -1,11 +1,12 @@
-package appl;
+import app.PersonApp;
+import dto.Employee;
+import dto.Manager;
+import dto.SaleManager;
+import dto.WageEmployee;
 
-import dto.*;
+import static app.PersonApp.*;
 
-import java.util.Arrays;
-import java.util.Objects;
-
-public class PersonAppl {
+public class Main {
 
     public static void main(String[] args) {
         Employee[] employees = {
@@ -30,45 +31,10 @@ public class PersonAppl {
         System.out.printf("Total sales = $%s%n", getTotalSales(employees));
 
         SaleManager saleManager =
-                new SaleManager("Sale manager name_4", 31, true, "Company_1", "sales1", 2300, 340_000, 2.5);
+                new SaleManager("Sale manager name_4", 30, true, "Company_1", "sales1", 2300, 340_000, 2.5);
 
         boolean searchRes = search(employees, saleManager);
 
         System.out.println(searchRes);
-    }
-
-    public static boolean search(Employee[] employees, Employee employee) {
-        if (Objects.isNull(employees) || Objects.isNull(employee)) {
-            return false;
-        }
-        return Arrays.asList(employees).contains(employee);
-    }
-
-    public static double getTotalSales(Employee[] employees) {
-        if (Objects.isNull(employees)) return -1;
-
-        return Arrays.stream(employees)
-                .filter(Objects::nonNull)
-                .filter(employee -> employee instanceof SaleManager)
-                .map(employee -> (SaleManager) employee)
-                .mapToDouble(SaleManager::getTotalSales)
-                .sum();
-    }
-
-    public static double getAllSalary(Employee[] employees) {
-        if (Objects.isNull(employees)) return -1;
-
-        return Arrays.stream(employees)
-                .filter(Objects::nonNull)
-                .mapToDouble(Employee::calculateSalary)
-                .sum();
-    }
-
-    public static void printAllEmployee(Employee[] employees) {
-        if (Objects.isNull(employees)) return;
-
-        Arrays.stream(employees)
-                .filter(Objects::nonNull)
-                .forEach(Person::display);
     }
 }
