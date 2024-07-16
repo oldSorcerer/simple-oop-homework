@@ -19,6 +19,7 @@
 
     <modules>
         <module>homework-one</module>
+        <module>homework-stream</module>
         <module>homework-two</module>
     </modules>
 
