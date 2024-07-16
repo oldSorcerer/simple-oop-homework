@@ -17,6 +17,7 @@ public class Main {
     public static void printStringReverse(String string) {
         if (Objects.isNull(string) || string.isBlank()) {
             System.out.println("Wrong string");
+            return;
         }
 
         System.out.println(new StringBuilder(string).reverse());
@@ -27,7 +28,7 @@ public class Main {
             return null;
         }
 
-        return phone.matches("7\\d{10}");
+        return phone.matches("8\\d{10}");
     }
 
     public static void printSubStringReverse(String string, int start, int finish) {

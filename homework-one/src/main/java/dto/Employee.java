@@ -19,5 +19,6 @@ public abstract class Employee extends Person {
         this.position = position;
         this.baseSalary = baseSalary;
     }
+
     public abstract double calculateSalary();
 }
