@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,6 +13,8 @@ public class Main {
         System.out.println(getWordsReverse("Hello my nice world"));
 
         printWordsReverseInColumn("Hello my nice world");
+
+        System.out.println(maxCharIndex("ddcccabbbb"));
     }
 
     public static void printStringReverse(String string) {
@@ -37,6 +40,7 @@ public class Main {
             || finish < 0 || finish > string.length()
             || start > finish) {
             System.out.println("Wrong string");
+            return;
         }
 
         String substring = string.substring(start, finish + 1);
@@ -59,9 +63,29 @@ public class Main {
             System.out.println("Wrong string");
         }
 
-        Arrays.stream(string.split(" "))
+        String str = Arrays.stream(string.split(" "))
                 .map(StringBuilder::new)
-                .peek(StringBuilder::reverse)
-                .forEach(System.out::println);
+                .map(StringBuilder::reverse)
+                .collect(Collectors.joining("\n"));
+        System.out.println(str);
+    }
+
+    public static int maxCharIndex(String string) {
+
+        Map<Character, Integer> map = new HashMap<>();
+
+        string.chars().boxed()
+                .map(Character::highSurrogate)
+                .forEach(character -> map.merge(character, 1, Integer::sum));
+
+//        for (char aChar : string.toCharArray()) {
+//            map.merge(aChar, 1, Integer::sum);
+//        }
+
+        return string.indexOf(map.entrySet().stream()
+                .filter(entry -> entry.getValue().equals(map.values().stream()
+                        .max(Integer::compareTo)
+                        .orElseThrow()))
+                .findFirst().orElseThrow().getKey());
     }
 }
