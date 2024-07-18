@@ -71,16 +71,15 @@ public class Main {
     }
 
     public static int maxCharIndex(String string) {
+        if (Objects.isNull(string) || string.isBlank()) {
+            return -1;
+        }
 
         Map<Character, Integer> map = new HashMap<>();
 
         string.chars().boxed()
                 .map(Character::highSurrogate)
                 .forEach(character -> map.merge(character, 1, Integer::sum));
-
-//        for (char aChar : string.toCharArray()) {
-//            map.merge(aChar, 1, Integer::sum);
-//        }
 
         return string.indexOf(map.entrySet().stream()
                 .filter(entry -> entry.getValue().equals(map.values().stream()
