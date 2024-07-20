@@ -75,11 +75,11 @@ public class Main {
             return -1;
         }
 
-        Map<Character, Integer> map = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();
 
-        string.chars().boxed()
-                .map(Character::highSurrogate)
-                .forEach(character -> map.merge(character, 1, Integer::sum));
+        string.chars()
+                .mapToObj(Character::toString)
+                .forEach(str -> map.merge(str, 1, Integer::sum));
 
         return string.indexOf(map.entrySet().stream()
                 .filter(entry -> entry.getValue().equals(map.values().stream()
