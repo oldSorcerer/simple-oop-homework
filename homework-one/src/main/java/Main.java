@@ -1,4 +1,3 @@
-import app.PersonApp;
 import dto.Employee;
 import dto.Manager;
 import dto.SaleManager;
