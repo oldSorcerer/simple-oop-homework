@@ -61,6 +61,7 @@ public class Main {
     public static void printWordsReverseInColumn(String string) {
         if (Objects.isNull(string) || string.isBlank()) {
             System.out.println("Wrong string");
+            return;
         }
 
         String str = Arrays.stream(string.split(" "))
@@ -75,15 +76,18 @@ public class Main {
             return -1;
         }
 
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Long> map = Arrays.stream(string.split(""))
+                .collect(Collectors.groupingBy(str -> str, Collectors.counting()));
 
-        string.chars()
-                .mapToObj(Character::toString)
-                .forEach(str -> map.merge(str, 1, Integer::sum));
+//        Map<String, Integer> map = new HashMap<>();
+//
+//        string.chars()
+//                .mapToObj(Character::toString)
+//                .forEach(str -> map.merge(str, 1, Integer::sum));
 
         return string.indexOf(map.entrySet().stream()
                 .filter(entry -> entry.getValue().equals(map.values().stream()
-                        .max(Integer::compareTo)
+                        .max(Long::compareTo)
                         .orElseThrow()))
                 .findFirst().orElseThrow().getKey());
     }
