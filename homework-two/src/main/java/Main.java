@@ -31,7 +31,7 @@ public class Main {
             return null;
         }
 
-        return phone.matches("8\\d{10}");
+        return phone.matches("^8\\d{10}");
     }
 
     public static void printSubStringReverse(String string, int start, int finish) {
