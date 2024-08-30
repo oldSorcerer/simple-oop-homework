@@ -12,7 +12,7 @@ public class Main {
 
         System.out.println(getWordsReverse("Hello my nice world"));
 
-        printWordsReverseInColumn("Hello my nice world");
+        System.out.println(getWordsReverseInColumn("Hello my nice world"));
 
         System.out.println(maxCharIndex("ddcccabbbb"));
     }
@@ -58,17 +58,16 @@ public class Main {
         return String.join(" ", Arrays.asList(string.split(" ")).reversed());
     }
 
-    public static void printWordsReverseInColumn(String string) {
+    public static String getWordsReverseInColumn(String string) {
         if (Objects.isNull(string) || string.isBlank()) {
             System.out.println("Wrong string");
-            return;
+            return "";
         }
 
-        String str = Arrays.stream(string.split(" "))
+        return Arrays.stream(string.split(" "))
                 .map(StringBuilder::new)
                 .map(StringBuilder::reverse)
-                .collect(Collectors.joining("\n"));
-        System.out.println(str);
+                .collect(Collectors.joining(System.lineSeparator()));
     }
 
     public static int maxCharIndex(String string) {
