@@ -88,6 +88,8 @@ public class Main {
                 .filter(entry -> entry.getValue().equals(map.values().stream()
                         .max(Long::compareTo)
                         .orElseThrow()))
-                .findFirst().orElseThrow().getKey());
+                .findFirst()
+                .orElseThrow()
+                .getKey());
     }
 }
