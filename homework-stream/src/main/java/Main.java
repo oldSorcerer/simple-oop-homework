@@ -1,13 +1,17 @@
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
 import java.util.*;
 
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class Main {
 
-    private static final List<Book> books = new ArrayList<>();
+    static List<Book> books = new ArrayList<>();
 
-    private static final Book book1 = new Book("Автор 1", "Книга 1", 29.99);
-    private static final Book book2 = new Book("Автор 2", "Книга 2", 19.99);
-    private static final Book book3 = new Book("Автор 3", "Книга 3", 24.99);
-    private static final Book book4 = new Book("Автор 2", "Книга 4", 124.99);
+    static Book book1 = new Book("Автор 1", "Книга 1", 29.99);
+    static Book book2 = new Book("Автор 2", "Книга 2", 19.99);
+    static Book book3 = new Book("Автор 3", "Книга 3", 24.99);
+    static Book book4 = new Book("Автор 2", "Книга 4", 124.99);
 
     static {
         book1.addReview("Отличная книга!");
