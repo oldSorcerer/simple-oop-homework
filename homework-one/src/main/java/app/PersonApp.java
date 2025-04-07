@@ -26,7 +26,7 @@ public class PersonApp {
     }
 
     public static double getAllSalary(Employee[] employees) {
-        if (Objects.isNull(employees)) return -1;
+        if (Objects.isNull(employees)) throw new NullPointerException();
 
         return Arrays.stream(employees)
                 .filter(Objects::nonNull)
@@ -35,7 +35,7 @@ public class PersonApp {
     }
 
     public static double getTotalSales(Employee[] employees) {
-        if (Objects.isNull(employees)) return -1;
+        if (Objects.isNull(employees)) throw new NullPointerException();
 
         return Arrays.stream(employees)
                 .filter(Objects::nonNull)

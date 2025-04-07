@@ -4,7 +4,6 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Getter
 public class Book {
     @Setter
@@ -13,7 +12,7 @@ public class Book {
     private String title;
     @Setter
     private double price;
-    private List<String> reviews;
+    private final List<String> reviews;
 
     public Book(String author, String title, double price) {
         this.author = author;

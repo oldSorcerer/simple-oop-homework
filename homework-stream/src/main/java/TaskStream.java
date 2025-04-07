@@ -124,7 +124,7 @@ public class TaskStream {
      * @return Map с двумя ключами
      */
     public static Map<String, List<Book>> task10(List<Book> books) {
-       return books.stream()
+        return books.stream()
                 .collect(Collectors.groupingBy(book -> (book.getPrice() < 50) ? "OK" : "Not Ok"));
     }
 
