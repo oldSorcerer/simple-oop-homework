@@ -1,18 +1,25 @@
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Book {
+
     @Setter
-    private String author;
+    String author;
+
     @Setter
-    private String title;
+    String title;
+
     @Setter
-    private double price;
-    private final List<String> reviews;
+    double price;
+
+    final List<String> reviews;
 
     public Book(String author, String title, double price) {
         this.author = author;

@@ -45,8 +45,10 @@ public class Main {
 
         String substring = string.substring(start, finish + 1);
         StringBuilder builder = new StringBuilder(substring);
+
         String srt = string.substring(0, start);
         String str2 = string.substring(finish + 1);
+
         System.out.println(srt + builder.reverse() + str2);
     }
 
@@ -84,12 +86,14 @@ public class Main {
 //                .mapToObj(Character::toString)
 //                .forEach(str -> map.merge(str, 1, Integer::sum));
 
-        return string.indexOf(map.entrySet().stream()
-                .filter(entry -> entry.getValue().equals(map.values().stream()
-                        .max(Long::compareTo)
-                        .orElseThrow()))
-                .findFirst()
-                .orElseThrow()
-                .getKey());
+//        return string.indexOf(map.entrySet().stream()
+//                .filter(entry -> entry.getValue().equals(map.values().stream()
+//                        .max(Long::compareTo)
+//                        .orElseThrow()))
+//                .findFirst()
+//                .orElseThrow()
+//                .getKey());
+
+         return string.indexOf(Collections.max(map.entrySet(), Map.Entry.comparingByValue()).getKey());
     }
 }
